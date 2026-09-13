@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Key Roles in BH-CONNECT & BHSA EBP Implementation | Microlearning</title>
+<meta name="description" content="A 5-minute microlearning on the four key stakeholder roles in BH-CONNECT and BHSA evidence-based practice implementation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #FFFFFF;
+  --ink: #1F265B;
+  --headline: #1D2033;
+  --ink-soft: #4E5384;
+  --line: #E1DEE6;
+
+  --blue-accent: #0B4FA3;
+  --blue-bg: #EAF1FA;
+
+  --grad-start: #2D6E8D;
+  --grad-end: #17315A;
+
+  --chip-bg: #FFD93D;
+  --chip-text: #000845;
+
+  --icon-navy: #0C1764;
+
+  --focus-ring: #17315A;
+
+  --font-body: "Segoe UI", "Noto Sans", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+h1, h2, h3 { font-family: var(--font-body); line-height: 1.25; color: var(--headline); }
+h1 { font-size: 2.1rem; font-weight: 800; margin: 0.4rem 0 0.75rem; }
+h2 { font-size: 1.45rem; font-weight: 700; margin: 0 0 0.6rem; }
+h3 { font-size: 1.1rem; font-weight: 700; margin: 0 0 0.4rem; }
+p { margin: 0 0 1rem; max-width: 68ch; }
+
+a { color: var(--blue-accent); }
+a:hover { color: var(--grad-end); }
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: var(--grad-end);
+  color: var(--white);
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+  border-radius: 0 0 6px 0;
+  font-weight: 700;
+}
+.skip-link:focus { left: 0; top: 0; }
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.fine-print { font-size: 0.85rem; color: var(--ink-soft); }
+
+.site-header {
+  background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+  color: var(--white);
+  padding: 3rem 0 2.75rem;
+}
+.site-header h1 { color: var(--white); }
+.eyebrow {
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: #C9DCE8;
+  margin: 0;
+}
+.lede { color: #E4EDF4; max-width: 60ch; font-size: 1.12rem; }
+.header-objectives {
+  margin: 1rem 0 1.15rem;
+  padding-left: 1.35rem;
+  color: #F2F6F9;
+  max-width: 68ch;
+}
+.header-objectives li { margin: 0.25rem 0; }
+.meta-badge {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.35);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #F2F6F9;
+  margin: 0;
+}
+
+/* ============ Player chrome (progressive enhancement) ============ */
+.js-only { display: none; }
+
+.player-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 1.25rem 1.5rem 0;
+  flex-wrap: wrap;
+}
+.progress-dots { display: flex; gap: 0.5rem; list-style: none; padding: 0; margin: 0; }
+.dot {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background: var(--white);
+  color: var(--ink-soft);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+.dot[aria-current="true"] { background: var(--grad-end); border-color: var(--grad-end); color: var(--white); }
+.progress-text { font-size: 0.85rem; color: var(--ink-soft); margin: 0; }
+
+.player-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 2rem;
+}
+.btn-nav {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 6px;
+  border: 2px solid var(--grad-end);
+  background: var(--white);
+  color: var(--grad-end);
+  cursor: pointer;
+}
+.btn-nav-primary { background: var(--grad-end); color: var(--white); }
+.btn-nav-primary:hover { background: var(--blue-accent); border-color: var(--blue-accent); }
+.btn-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.screen-hidden { display: none !important; }
+
+.section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.section:last-of-type { border-bottom: none; }
+
+.video-frame {
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+.video-frame video { display: block; width: 100%; height: auto; }
+
+.transcript {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--blue-bg);
+  padding: 0.25rem 1.25rem;
+}
+.transcript summary { cursor: pointer; font-weight: 700; padding: 0.85rem 0; }
+.transcript-body p { font-size: 0.95rem; }
+
+.section-flow { background: var(--blue-bg); }
+.flow-diagram {
+  list-style: none;
+  margin: 1.5rem 0 0.5rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.5rem 0.35rem;
+}
+.flow-step {
+  flex: 1 1 150px;
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-top: 4px solid var(--grad-end);
+  background: var(--white);
+}
+.flow-label { font-weight: 700; font-size: 1.05rem; color: var(--headline); }
+.flow-role { font-size: 0.9rem; color: var(--ink-soft); }
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--ink-soft);
+  padding: 0 0.15rem;
+}
+@media (max-width: 640px) {
+  .flow-diagram { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); padding: 0.1rem 0; }
+}
+
+.role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }
+@media (max-width: 640px) { .role-grid { grid-template-columns: 1fr; } }
+.role-card { background: var(--white); border: 1px solid var(--line); padding: 1.1rem 1.3rem; border-radius: 4px; }
+.role-card h3 {
+  display: inline-block;
+  font-weight: 700;
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  font-size: 1.05rem;
+}
+.role-card p { font-size: 0.95rem; margin: 0.6rem 0 0; }
+
+.accordion-group { margin-top: 1.25rem; }
+.accordion-item { border: 1px solid var(--line); border-radius: 8px; margin-bottom: 0.65rem; background: var(--white); overflow: hidden; }
+.accordion-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1rem 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--headline);
+}
+.accordion-item summary::-webkit-details-marker { display: none; }
+.accordion-icon {
+  width: 0.7rem; height: 0.7rem;
+  border-right: 2px solid var(--grad-end);
+  border-bottom: 2px solid var(--grad-end);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+.accordion-item[open] .accordion-icon { transform: rotate(225deg); margin-top: 0.35rem; }
+.accordion-content { padding: 0 1.3rem 1.3rem; border-top: 1px solid var(--line); }
+.role-breakdown { margin: 1rem 0 0; display: grid; gap: 0.75rem; }
+.role-breakdown > div { display: grid; grid-template-columns: 140px 1fr; gap: 0.75rem; align-items: baseline; }
+@media (max-width: 560px) { .role-breakdown > div { grid-template-columns: 1fr; gap: 0.2rem; } }
+.role-breakdown dt { margin: 0; }
+.role-breakdown dd { margin: 0; font-size: 0.93rem; }
+
+.tag {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  background: var(--chip-bg);
+  color: var(--chip-text);
+}
+
+.section-check { background: var(--blue-bg); }
+fieldset { border: none; padding: 0; margin: 1.25rem 0 0; }
+legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0; margin-bottom: 1rem; max-width: 62ch; }
+.option { display: flex; align-items: flex-start; gap: 0.65rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+.option input[type="radio"] { width: 1.15rem; height: 1.15rem; margin-top: 0.15rem; flex-shrink: 0; }
+.option label { cursor: pointer; font-weight: 600; }
+
+.btn-check {
+  margin-top: 1.25rem;
+  background: var(--grad-end);
+  color: var(--white);
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-check:hover { background: var(--blue-accent); }
+
+.feedback { margin-top: 1.1rem; padding: 1rem 1.2rem; border-radius: 8px; font-size: 0.96rem; border: 1px solid transparent; }
+.feedback.correct { background: #E1F0EA; border-color: #2E8B67; color: var(--ink); }
+.feedback.incorrect { background: var(--chip-bg); border-color: #C79A00; color: var(--chip-text); }
+.feedback.empty { background: #FBF0DC; border-color: #C79A3E; color: var(--ink); }
+
+.site-footer { padding: 1.75rem 0 2.5rem; }
+.site-footer p { font-size: 0.85rem; color: var(--ink-soft); max-width: 70ch; margin: 0 0 0.5rem; }
+.credit { font-weight: 600; color: var(--ink) !important; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">BH-CONNECT &amp; BHSA &middot; Key Roles</p>
+    <h1>Key Roles in EBP Implementation</h1>
+    <p class="lede">Four groups share the work. Learn who does what and how the roles work together.</p>
+    <ul class="header-objectives" aria-label="Learning objectives">
+      <li>Identify each stakeholder role's core responsibility.</li>
+      <li>Compare how the roles interact across key implementation processes.</li>
+      <li>Select the appropriate implementation partner for a common need.</li>
+    </ul>
+    <p class="meta-badge"><span aria-hidden="true">&#9201;</span> About 5 minutes &middot; 3 objectives</p>
+  </div>
+</header>
+
+<nav class="player-progress js-only" aria-label="Course progress">
+  <ol class="progress-dots" role="list">
+    <li><button type="button" class="dot" data-target="0" aria-current="true">1</button></li>
+    <li><button type="button" class="dot" data-target="1" aria-current="false">2</button></li>
+    <li><button type="button" class="dot" data-target="2" aria-current="false">3</button></li>
+    <li><button type="button" class="dot" data-target="3" aria-current="false">4</button></li>
+  </ol>
+  <p class="progress-text" aria-live="polite">Screen 1 of 4</p>
+</nav>
+
+<main id="main-content">
+
+  <section class="section screen" data-title="Overview" aria-labelledby="video-heading">
+    <div class="wrap">
+      <h2 id="video-heading">Watch the overview</h2>
+      <p>Captions on. Transcript below.</p>
+
+      <div class="video-frame">
+        <video id="intro-video" controls preload="metadata" poster="assets/video-poster.svg" aria-describedby="video-caption-note">
+          <source src="assets/intro-video.mp4" type="video/mp4">
+          <track kind="captions" src="assets/intro-video.vtt" srclang="en" label="English captions" default>
+          Your browser doesn't support embedded video. Use the transcript below or the
+          <a href="assets/intro-video.mp4">direct video link</a>.
+        </video>
+      </div>
+      <p id="video-caption-note" class="fine-print">Video includes synced captions and a full transcript.</p>
+
+      <details class="transcript">
+        <summary>Read transcript</summary>
+        <div class="transcript-body">
+          <p>Welcome to Key Stakeholder Roles in E B P Implementation. In the next four minutes, you will learn how behavioral health practitioners, counties, Centers of Excellence, and Department of Health Care Services contribute to implementing evidence-based practices and how their responsibilities differ.</p>
+
+          <p>Evidence-based practice, or E B P, implementation involves four key stakeholder groups. Each group has distinct responsibilities for supporting implementation, meeting requirements, and delivering services.</p>
+
+          <p>Behavioral health practitioners complete required training, meet applicable quality requirements, deliver E B Ps, and report required data. Counties coordinate implementation, ensure practitioners meet requirements, and submit Medi-Cal claims and individual and service-level encounters to D H C S. Centers of Excellence develop implementation resources and provide training, technical assistance, and quality support. D H C S establishes requirements and operational guidance, reviews data, oversees compliance, and addresses policy and payment questions.</p>
+
+          <p>Together, these four roles form a connected system. D H C S establishes requirements and provides oversight. Centers of Excellence, or C O Es, provide training, technical assistance, and quality support. Counties ensure their practitioners meet applicable requirements. Practitioners complete the requirements and deliver E B Ps.</p>
+
+          <p>You have learned about the four stakeholder groups. Select Continue to see how DHCS, COEs, counties, and behavioral health practitioners work together to support EBP implementation.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section screen section-flow" data-title="The four roles" aria-labelledby="flow-heading">
+    <div class="wrap">
+      <h2 id="flow-heading">The four roles</h2>
+      <p><strong>Objective 1:</strong> Identify each stakeholder role's core responsibility.</p>
+      <p>This recap shows the four roles and how their responsibilities connect.</p>
+
+      <ol class="flow-diagram" aria-label="Connected responsibilities from DHCS to practitioners">
+        <li class="flow-step"><span class="flow-label">DHCS</span><span class="flow-role">sets requirements</span></li>
+        <li class="flow-arrow" aria-hidden="true">&rarr;</li>
+        <li class="flow-step"><span class="flow-label">COEs</span><span class="flow-role">training, technical assistance &amp; fidelity support</span></li>
+        <li class="flow-arrow" aria-hidden="true">&rarr;</li>
+        <li class="flow-step"><span class="flow-label">Counties</span><span class="flow-role">ensure practitioners meet requirements</span></li>
+        <li class="flow-arrow" aria-hidden="true">&rarr;</li>
+        <li class="flow-step"><span class="flow-label">Practitioners</span><span class="flow-role">complete requirements &amp; deliver EBPs</span></li>
+      </ol>
+
+      <div class="role-grid">
+        <article class="role-card">
+          <h3>Behavioral Health Practitioners</h3>
+          <p>Contract to deliver EBPs. Complete training &amp; fidelity checks. Provide care.</p>
+        </article>
+        <article class="role-card">
+          <h3>Counties</h3>
+          <p>Contract practitioners. Ensure requirements are met. Report to DHCS.</p>
+        </article>
+        <article class="role-card">
+          <h3>Centers of Excellence (COEs)</h3>
+          <p>Deliver training, technical assistance &amp; fidelity support. Track status. Send reports.</p>
+        </article>
+        <article class="role-card">
+          <h3>DHCS</h3>
+          <p>Set requirements. Oversee compliance. Answer policy &amp; payment questions.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section screen" data-title="See it in action" aria-labelledby="action-heading">
+    <div class="wrap">
+      <h2 id="action-heading">See it in action</h2>
+      <p><strong>Objective 2:</strong> Compare how the roles interact across key implementation processes.</p>
+      <p>Select each downward arrow to expand Training, Fidelity Monitoring, and Service Delivery. Review how responsibilities are shared across DHCS, COEs, counties, and practitioners.</p>
+
+      <div class="accordion-group">
+
+        <details class="accordion-item">
+          <summary><span>Training</span><span class="accordion-icon" aria-hidden="true"></span></summary>
+          <div class="accordion-content">
+            <dl class="role-breakdown">
+              <div><dt class="tag">DHCS</dt><dd>Set requirements; oversee compliance.</dd></div>
+              <div><dt class="tag">COEs</dt><dd>Develop, deliver &amp; track trainings; send reports.</dd></div>
+              <div><dt class="tag">Counties</dt><dd>Ensure training is completed; review reports.</dd></div>
+              <div><dt class="tag">Practitioners</dt><dd>Complete required trainings.</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary><span>Fidelity Monitoring</span><span class="accordion-icon" aria-hidden="true"></span></summary>
+          <div class="accordion-content">
+            <dl class="role-breakdown">
+              <div><dt class="tag">DHCS</dt><dd>Set requirements; review statewide data.</dd></div>
+              <div><dt class="tag">COEs</dt><dd>Conduct assessments; coordinate scheduling; send reports.</dd></div>
+              <div><dt class="tag">Counties</dt><dd>Ensure timelines are met; review reports.</dd></div>
+              <div><dt class="tag">Practitioners</dt><dd>Complete fidelity assessments on schedule.</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary><span>Service Delivery</span><span class="accordion-icon" aria-hidden="true"></span></summary>
+          <div class="accordion-content">
+            <dl class="role-breakdown">
+              <div><dt class="tag">DHCS</dt><dd>Set guidance; oversee compliance.</dd></div>
+              <div><dt class="tag">COEs</dt><dd>Support quality service delivery for practitioners &amp; counties.</dd></div>
+              <div><dt class="tag">Counties</dt><dd>Ensure service delivery meets requirements.</dd></div>
+              <div><dt class="tag">Practitioners</dt><dd>Enroll eligible individuals; deliver EBPs to standard.</dd></div>
+            </dl>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section screen section-check" data-title="Check your understanding" aria-labelledby="check-heading">
+    <div class="wrap">
+      <h2 id="check-heading">Check your understanding</h2>
+      <p><strong>Objective 3:</strong> Select the appropriate implementation partner for a common need.</p>
+
+      <form id="scenario-form" novalidate>
+        <fieldset>
+          <legend>An ACT team is ready for its baseline fidelity assessment. Which implementation partner develops and conducts the assessment and coordinates scheduling with the team?</legend>
+
+          <div class="option">
+            <input type="radio" id="opt-a" name="scenario" value="dhcs">
+            <label for="opt-a">DHCS</label>
+          </div>
+          <div class="option">
+            <input type="radio" id="opt-b" name="scenario" value="coe">
+            <label for="opt-b">Their Center of Excellence (COE)</label>
+          </div>
+          <div class="option">
+            <input type="radio" id="opt-c" name="scenario" value="county">
+            <label for="opt-c">The county's contracting office</label>
+          </div>
+
+          <button type="submit" class="btn-check">Check answer</button>
+        </fieldset>
+      </form>
+
+      <div id="scenario-feedback" class="feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="player-nav js-only">
+  <button type="button" id="btn-back" class="btn-nav" disabled>Back</button>
+  <button type="button" id="btn-next" class="btn-nav btn-nav-primary">Next</button>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Source: DHCS BH-CONNECT/BHSA guidance. <a href="https://bhcoe.dhcs.ca.gov/resources/bh-connect-bhsa-ebp-requirements-key-roles/">Review the Key Roles resource</a> for full process and EBP detail.</p>
+    <p class="credit">Designed by Shabnam Goli, PhD</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---- Scenario check ----
+  var form = document.getElementById("scenario-form");
+  var feedback = document.getElementById("scenario-feedback");
+
+  var messages = {
+    dhcs: "Try again. DHCS establishes fidelity requirements and reviews statewide fidelity data, but it does not conduct the assessment.",
+    coe: "Correct. COEs develop and conduct fidelity assessments and coordinate scheduling with practitioner teams.",
+    county: "Try again. Counties ensure practitioners complete fidelity assessments on the required timelines, but COEs develop and conduct the assessments."
+  };
+
+  if (form && feedback) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var selected = form.querySelector('input[name="scenario"]:checked');
+
+      feedback.classList.remove("correct", "incorrect", "empty");
+
+      if (!selected) {
+        feedback.classList.add("empty");
+        feedback.textContent = "Choose an option first.";
+        feedback.hidden = false;
+        feedback.focus();
+        return;
+      }
+
+      var value = selected.value;
+      feedback.classList.add(value === "coe" ? "correct" : "incorrect");
+      feedback.textContent = messages[value];
+      feedback.hidden = false;
+      feedback.focus();
+    });
+  }
+
+  // ---- Player-style pagination (progressive enhancement) ----
+  var screens = Array.prototype.slice.call(document.querySelectorAll(".screen"));
+  if (!screens.length) return;
+
+  var jsOnlyEls = Array.prototype.slice.call(document.querySelectorAll(".js-only"));
+  jsOnlyEls.forEach(function (el) { el.classList.remove("js-only"); });
+
+  var dots = Array.prototype.slice.call(document.querySelectorAll(".dot"));
+  var progressText = document.querySelector(".progress-text");
+  var btnBack = document.getElementById("btn-back");
+  var btnNext = document.getElementById("btn-next");
+  var current = 0;
+
+  function showScreen(index) {
+    screens.forEach(function (s, i) {
+      s.classList.toggle("screen-hidden", i !== index);
+    });
+    dots.forEach(function (d, i) {
+      d.setAttribute("aria-current", i === index ? "true" : "false");
+    });
+    if (progressText) {
+      progressText.textContent = "Screen " + (index + 1) + " of " + screens.length + ": " + screens[index].getAttribute("data-title");
+    }
+    if (btnBack) btnBack.disabled = index === 0;
+    if (btnNext) btnNext.textContent = index === screens.length - 1 ? "Restart" : "Next";
+    current = index;
+
+    var heading = screens[index].querySelector("h2");
+    if (heading) {
+      heading.setAttribute("tabindex", "-1");
+      heading.focus();
+    }
+    screens[index].scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  dots.forEach(function (d, i) {
+    d.addEventListener("click", function () { showScreen(i); });
+  });
+  if (btnBack) btnBack.addEventListener("click", function () { if (current > 0) showScreen(current - 1); });
+  if (btnNext) btnNext.addEventListener("click", function () {
+    if (current < screens.length - 1) showScreen(current + 1);
+    else showScreen(0);
+  });
+
+  showScreen(0);
+})();
+</script>
+</body>
+</html>
