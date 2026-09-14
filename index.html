@@ -96,7 +96,7 @@ a:hover { color: var(--grad-end); }
   font-weight: 600;
   font-size: 0.85rem;
   letter-spacing: 0.02em;
-  color: #C9DCE8;
+  color: #FFFFFF;
   margin: 0;
 }
 .lede { color: #E4EDF4; max-width: 60ch; font-size: 1.12rem; }
@@ -229,26 +229,6 @@ a:hover { color: var(--grad-end); }
   color: var(--ink-soft);
   padding: 0 0.15rem;
 }
-.flow-arrow-control { display: none; }
-.flow-enhanced .flow-arrow-control { display: flex; }
-.flow-reveal {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: 2px solid var(--grad-end);
-  border-radius: 50%;
-  background: var(--white);
-  color: var(--grad-end);
-  font-family: var(--font-body);
-  font-size: 1.35rem;
-  font-weight: 700;
-  line-height: 1;
-  cursor: pointer;
-}
-.flow-reveal:hover { background: var(--grad-end); color: var(--white); }
-.flow-reveal:disabled { opacity: 0.6; cursor: default; }
 @media (max-width: 640px) {
   .flow-diagram { flex-direction: column; }
   .flow-arrow { transform: rotate(90deg); padding: 0.1rem 0; }
@@ -364,11 +344,11 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
 
 <nav class="player-progress js-only" aria-label="Course progress">
   <ol class="progress-dots" role="list">
-    <li><button type="button" class="dot" data-target="0" aria-current="true">1</button></li>
-    <li><button type="button" class="dot" data-target="1" aria-current="false">2</button></li>
-    <li><button type="button" class="dot" data-target="2" aria-current="false">3</button></li>
-    <li><button type="button" class="dot" data-target="3" aria-current="false">4</button></li>
-    <li><button type="button" class="dot" data-target="4" aria-current="false">5</button></li>
+    <li><button type="button" class="dot" data-target="0" aria-current="true" aria-label="Go to screen 1: Overview">1</button></li>
+    <li><button type="button" class="dot" data-target="1" aria-current="false" aria-label="Go to screen 2: The four roles">2</button></li>
+    <li><button type="button" class="dot" data-target="2" aria-current="false" aria-label="Go to screen 3: See it in action">3</button></li>
+    <li><button type="button" class="dot" data-target="3" aria-current="false" aria-label="Go to screen 4: Check your understanding">4</button></li>
+    <li><button type="button" class="dot" data-target="4" aria-current="false" aria-label="Go to screen 5: Training complete">5</button></li>
   </ol>
   <p class="progress-text" aria-live="polite">Screen 1 of 5</p>
 </nav>
@@ -393,7 +373,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
       <details class="transcript">
         <summary>Read transcript</summary>
         <div class="transcript-body">
-          <p>Welcome to Key Stakeholder Roles in E B P Implementation. In the next four minutes, you will learn how behavioral health practitioners, counties, Centers of Excellence, and Department of Health Care Services contribute to implementing evidence-based practices and how their responsibilities differ.</p>
+          <p>Welcome to Key Stakeholder Roles in E B P Implementation. In the next five minutes, you will learn how behavioral health practitioners, counties, Centers of Excellence, and Department of Health Care Services contribute to implementing evidence-based practices and how their responsibilities differ.</p>
 
           <p>Evidence-based practice, or E B P, implementation involves four key stakeholder groups. Each group has distinct responsibilities for supporting implementation, meeting requirements, and delivering services.</p>
 
@@ -411,34 +391,34 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
     <div class="wrap">
       <h2 id="flow-heading">The four roles</h2>
       <p><strong>Objective 1:</strong> Identify each stakeholder role's core responsibility.</p>
-      <p>Select each arrow to reveal the next stakeholder. Then review the four role cards.</p>
+      <p>This recap shows the four roles and how their responsibilities connect.</p>
 
       <ol class="flow-diagram" aria-label="Connected responsibilities from DHCS to practitioners">
-        <li class="flow-step" id="flow-dhcs"><span class="flow-label">DHCS</span><span class="flow-role">sets requirements</span></li>
-        <li class="flow-arrow flow-arrow-control"><button type="button" class="flow-reveal" aria-controls="flow-coes" aria-expanded="false" aria-label="Reveal Centers of Excellence">&rarr;</button></li>
-        <li class="flow-step" id="flow-coes"><span class="flow-label">COEs</span><span class="flow-role">provide training, technical assistance &amp; fidelity support</span></li>
-        <li class="flow-arrow flow-arrow-control"><button type="button" class="flow-reveal" aria-controls="flow-counties" aria-expanded="false" aria-label="Reveal counties">&rarr;</button></li>
-        <li class="flow-step" id="flow-counties"><span class="flow-label">Counties</span><span class="flow-role">ensure practitioners meet requirements</span></li>
-        <li class="flow-arrow flow-arrow-control"><button type="button" class="flow-reveal" aria-controls="flow-practitioners" aria-expanded="false" aria-label="Reveal practitioners">&rarr;</button></li>
-        <li class="flow-step" id="flow-practitioners"><span class="flow-label">Practitioners</span><span class="flow-role">complete requirements &amp; deliver EBPs</span></li>
+        <li class="flow-step"><span class="flow-label">DHCS</span><span class="flow-role">sets requirements</span></li>
+        <li class="flow-arrow" aria-hidden="true">&rarr;</li>
+        <li class="flow-step"><span class="flow-label">COEs</span><span class="flow-role">provide training, technical assistance &amp; fidelity support</span></li>
+        <li class="flow-arrow" aria-hidden="true">&rarr;</li>
+        <li class="flow-step"><span class="flow-label">Counties</span><span class="flow-role">ensure practitioners meet requirements</span></li>
+        <li class="flow-arrow" aria-hidden="true">&rarr;</li>
+        <li class="flow-step"><span class="flow-label">Practitioners</span><span class="flow-role">complete requirements &amp; deliver EBPs</span></li>
       </ol>
 
       <div class="role-grid">
         <article class="role-card">
-          <h3>DHCS</h3>
-          <p>Set requirements. Oversee compliance. Answer policy &amp; payment questions.</p>
-        </article>
-        <article class="role-card">
-          <h3>Centers of Excellence (COEs)</h3>
-          <p>Deliver training, technical assistance &amp; fidelity support. Track status. Send reports.</p>
+          <h3>Behavioral Health Practitioners</h3>
+          <p>Contract to deliver EBPs. Complete training &amp; fidelity checks. Provide care.</p>
         </article>
         <article class="role-card">
           <h3>Counties</h3>
           <p>Contract practitioners. Ensure requirements are met. Report to DHCS.</p>
         </article>
         <article class="role-card">
-          <h3>Behavioral Health Practitioners</h3>
-          <p>Contract to deliver EBPs. Complete training &amp; fidelity checks. Provide care.</p>
+          <h3>Centers of Excellence (COEs)</h3>
+          <p>Deliver training, technical assistance &amp; fidelity support. Track status. Send reports.</p>
+        </article>
+        <article class="role-card">
+          <h3>DHCS</h3>
+          <p>Set requirements. Oversee compliance. Answer policy &amp; payment questions.</p>
         </article>
       </div>
     </div>
@@ -448,7 +428,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
     <div class="wrap">
       <h2 id="action-heading">See it in action</h2>
       <p><strong>Objective 2:</strong> Differentiate stakeholder responsibilities across key implementation processes.</p>
-      <p>Select each downward arrow to expand Training, Fidelity Monitoring, and Service Delivery. Review how responsibilities are shared across DHCS, COEs, counties, and practitioners.</p>
+      <p>Select each downward arrow to see how DHCS, COEs, counties, and practitioners share responsibilities across training, fidelity monitoring, and service delivery.</p>
 
       <div class="accordion-group">
 
@@ -584,39 +564,6 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
       feedback.hidden = false;
       feedback.focus();
     });
-  }
-
-  // ---- Click-to-reveal stakeholder sequence (progressive enhancement) ----
-  var flowDiagram = document.querySelector(".flow-diagram");
-  if (flowDiagram) {
-    var flowButtons = Array.prototype.slice.call(flowDiagram.querySelectorAll(".flow-reveal"));
-    var flowSteps = Array.prototype.slice.call(flowDiagram.querySelectorAll(".flow-step"));
-
-    if (flowButtons.length && flowSteps.length) {
-      flowDiagram.classList.add("flow-enhanced");
-      flowSteps.slice(1).forEach(function (step) { step.hidden = true; });
-      flowButtons.forEach(function (button, index) {
-        var arrowItem = button.closest(".flow-arrow");
-        if (index > 0 && arrowItem) arrowItem.hidden = true;
-
-        button.addEventListener("click", function () {
-          var target = document.getElementById(button.getAttribute("aria-controls"));
-          if (!target) return;
-
-          target.hidden = false;
-          button.setAttribute("aria-expanded", "true");
-          button.disabled = true;
-
-          if (flowButtons[index + 1]) {
-            var nextArrow = flowButtons[index + 1].closest(".flow-arrow");
-            if (nextArrow) nextArrow.hidden = false;
-          }
-
-          target.setAttribute("tabindex", "-1");
-          target.focus();
-        });
-      });
-    }
   }
 
   // ---- Player-style pagination (progressive enhancement) ----
