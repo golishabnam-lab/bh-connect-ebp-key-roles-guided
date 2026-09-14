@@ -122,6 +122,54 @@ a:hover { color: var(--grad-end); }
   color: #F2F6F9;
   margin: 0;
 }
+.glossary-trigger {
+  margin-left: 0.65rem;
+  border: 2px solid rgba(255,255,255,0.8);
+  background: transparent;
+  color: var(--white);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font: 700 0.9rem var(--font-body);
+  cursor: pointer;
+}
+.glossary-trigger:hover { background: var(--white); color: var(--grad-end); }
+
+.glossary-dialog {
+  width: min(680px, calc(100% - 2rem));
+  max-height: min(80vh, 720px);
+  border: 0;
+  border-radius: 10px;
+  padding: 0;
+  color: var(--ink);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
+}
+.glossary-dialog::backdrop { background: rgba(15,25,45,0.72); }
+.glossary-inner { padding: 1.5rem; }
+.glossary-header { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
+.glossary-header h2 { margin-bottom: 0.25rem; }
+.glossary-close {
+  border: 2px solid var(--grad-end);
+  background: var(--white);
+  color: var(--grad-end);
+  border-radius: 6px;
+  padding: 0.45rem 0.75rem;
+  font: 700 0.9rem var(--font-body);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.glossary-list { margin: 1rem 0 0; }
+.glossary-list div { padding: 0.55rem 0; border-top: 1px solid var(--line); }
+.glossary-list dt { font-weight: 800; color: var(--headline); }
+.glossary-list dd { margin: 0.1rem 0 0; }
+.inline-glossary {
+  border: 0;
+  background: transparent;
+  color: var(--blue-accent);
+  padding: 0;
+  font: 700 0.95rem var(--font-body);
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 /* ============ Player chrome (progressive enhancement) ============ */
 .js-only { display: none; }
@@ -230,6 +278,7 @@ a:hover { color: var(--grad-end); }
 }
 .pathway-list { margin: 0 0 1rem; padding-left: 1.25rem; }
 .pathway-list li { margin: 0.35rem 0; }
+.pathway-ebps { font-weight: 700; color: var(--ink); margin-bottom: 0; }
 .pathway-summary { font-size: 0.94rem; margin: auto 0 0; }
 .scope-note {
   margin-top: 1rem;
@@ -328,18 +377,46 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
     <p class="lede">Four groups share the work. Learn who does what and how the roles work together.</p>
     <p class="objective-intro">By the end of this training, you will be able to:</p>
     <ul class="header-objectives" aria-label="Learning objectives">
-      <li>Identify each stakeholder role's core responsibility.</li>
+      <li>Identify the applicable quality-review process for each EBP.</li>
       <li>Differentiate stakeholder responsibilities across key implementation processes.</li>
       <li>Select the appropriate implementation partner for a common need.</li>
     </ul>
     <p class="meta-badge"><span aria-hidden="true">&#9201;</span> Takes about 5 minutes</p>
+    <button type="button" class="glossary-trigger" data-open-glossary>Glossary</button>
   </div>
 </header>
+
+<dialog id="glossary-dialog" class="glossary-dialog" aria-labelledby="glossary-heading" aria-describedby="glossary-description">
+  <div class="glossary-inner">
+    <div class="glossary-header">
+      <div>
+        <h2 id="glossary-heading">Course glossary</h2>
+        <p id="glossary-description">Use this glossary whenever you encounter an unfamiliar acronym.</p>
+      </div>
+      <button type="button" id="glossary-close" class="glossary-close">Close glossary</button>
+    </div>
+    <dl class="glossary-list">
+      <div><dt>EBP</dt><dd>Evidence-Based Practice</dd></div>
+      <div><dt>BH-CONNECT</dt><dd>Behavioral Health Community-Based Organized Networks of Equitable Care and Treatment</dd></div>
+      <div><dt>BHSA</dt><dd>Behavioral Health Services Act</dd></div>
+      <div><dt>DHCS</dt><dd>California Department of Health Care Services</dd></div>
+      <div><dt>COE or COEs</dt><dd>Center of Excellence or Centers of Excellence</dd></div>
+      <div><dt>ACT</dt><dd>Assertive Community Treatment</dd></div>
+      <div><dt>FACT</dt><dd>Forensic Assertive Community Treatment</dd></div>
+      <div><dt>CSC</dt><dd>Coordinated Specialty Care for First Episode Psychosis</dd></div>
+      <div><dt>IPS</dt><dd>Individual Placement and Support Supported Employment</dd></div>
+      <div><dt>HFW</dt><dd>High Fidelity Wraparound</dd></div>
+      <div><dt>MST</dt><dd>Multisystemic Therapy</dd></div>
+      <div><dt>FFT</dt><dd>Functional Family Therapy</dd></div>
+      <div><dt>PCIT</dt><dd>Parent-Child Interaction Therapy</dd></div>
+    </dl>
+  </div>
+</dialog>
 
 <nav class="player-progress js-only" aria-label="Course progress">
   <ol class="progress-dots" role="list">
     <li><button type="button" class="dot" data-target="0" aria-current="true" aria-label="Go to screen 1: Overview">1</button></li>
-    <li><button type="button" class="dot" data-target="1" aria-current="false" aria-label="Go to screen 2: Requirements vary by EBP">2</button></li>
+    <li><button type="button" class="dot" data-target="1" aria-current="false" aria-label="Go to screen 2: Quality requirements differ by EBP">2</button></li>
     <li><button type="button" class="dot" data-target="2" aria-current="false" aria-label="Go to screen 3: Roles in action">3</button></li>
     <li><button type="button" class="dot" data-target="3" aria-current="false" aria-label="Go to screen 4: Check your understanding">4</button></li>
     <li><button type="button" class="dot" data-target="4" aria-current="false" aria-label="Go to screen 5: Training complete. Complete the knowledge check to unlock." disabled>5</button></li>
@@ -381,29 +458,32 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
     </div>
   </section>
 
-  <section class="section screen section-pathways" data-title="Requirements vary by EBP" aria-labelledby="pathways-heading">
+  <section class="section screen section-pathways" data-title="Quality requirements differ by EBP" aria-labelledby="pathways-heading">
     <div class="wrap">
-      <h2 id="pathways-heading">Requirements vary by EBP</h2>
-      <p>The stakeholder groups remain the same, but the quality-review process differs by EBP.</p>
+      <h2 id="pathways-heading">Quality requirements differ by EBP</h2>
+      <p><strong>Objective 1:</strong> Identify the applicable quality-review process for each EBP.</p>
+      <p>Different EBPs use different processes to confirm that required standards are met.</p>
 
       <div class="pathway-grid">
         <article class="pathway-card">
           <h3>Fidelity monitoring</h3>
-          <p class="pathway-label">ACT &middot; FACT &middot; CSC &middot; IPS &middot; HFW</p>
-          <p class="pathway-summary">Practitioners complete assessments. COEs develop and conduct them. Counties ensure timelines. DHCS sets requirements and reviews fidelity data.</p>
+          <p>Checks whether services follow the evidence-based model.</p>
+          <p class="pathway-label">Applies to</p>
+          <p class="pathway-ebps">ACT, FACT, CSC, IPS, and HFW</p>
         </article>
 
         <article class="pathway-card">
           <h3>Accreditation or certification</h3>
+          <p>Confirms that formal standards have been met.</p>
           <ul class="pathway-list">
-            <li><strong>Clubhouse Services:</strong> accreditation</li>
-            <li><strong>MST, FFT and PCIT:</strong> certification</li>
+            <li><strong>Accreditation:</strong> Clubhouse Services</li>
+            <li><strong>Certification:</strong> MST, FFT, and PCIT</li>
           </ul>
-          <p class="pathway-summary">When applicable, practitioners complete the process. COEs develop and conduct it. Counties ensure completion. DHCS sets requirements and oversees compliance.</p>
         </article>
       </div>
 
-      <p class="scope-note"><strong>Important:</strong> Requirements and county participation vary by EBP. Clubhouse Services is optional, and limited BHSA exemptions may apply. Review DHCS guidance for EBP-specific requirements.</p>
+      <p class="scope-note"><strong>Requirements vary by EBP.</strong> <a href="https://bhcoe.dhcs.ca.gov/resources/bh-connect-bhsa-ebp-requirements-key-roles/">Review the complete DHCS requirements and stakeholder roles</a>.</p>
+      <p><button type="button" class="inline-glossary" data-open-glossary>Open the glossary for full EBP names</button></p>
     </div>
   </section>
 
@@ -509,7 +589,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
       <p>You have learned who the four key stakeholder groups are and how they work together to support EBP implementation.</p>
       <h3>You can now:</h3>
       <ul class="completion-objectives">
-        <li>Identify each stakeholder role's core responsibility.</li>
+        <li>Identify the applicable quality-review process for each EBP.</li>
         <li>Differentiate stakeholder responsibilities across key implementation processes.</li>
         <li>Select the appropriate implementation partner for a common need.</li>
       </ul>
@@ -533,6 +613,29 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
 <script>
 (function () {
   "use strict";
+
+  // ---- Accessible glossary dialog ----
+  var glossaryDialog = document.getElementById("glossary-dialog");
+  var glossaryClose = document.getElementById("glossary-close");
+  var glossaryTriggers = Array.prototype.slice.call(document.querySelectorAll("[data-open-glossary]"));
+  var glossaryInvoker = null;
+
+  glossaryTriggers.forEach(function (trigger) {
+    trigger.addEventListener("click", function () {
+      glossaryInvoker = trigger;
+      if (glossaryDialog && typeof glossaryDialog.showModal === "function") {
+        glossaryDialog.showModal();
+        glossaryClose.focus();
+      }
+    });
+  });
+
+  if (glossaryClose && glossaryDialog) {
+    glossaryClose.addEventListener("click", function () { glossaryDialog.close(); });
+    glossaryDialog.addEventListener("close", function () {
+      if (glossaryInvoker) glossaryInvoker.focus();
+    });
+  }
 
   // ---- Scenario check ----
   var form = document.getElementById("scenario-form");
