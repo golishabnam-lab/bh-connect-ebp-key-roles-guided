@@ -496,7 +496,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
         </article>
       </div>
 
-      <p class="scope-note"><strong>Requirements vary by EBP.</strong> <a href="https://bhcoe.dhcs.ca.gov/resources/bh-connect-bhsa-ebp-requirements-key-roles/">Review the complete DHCS requirements and stakeholder roles</a>.</p>
+      <p class="scope-note"><strong>Requirements vary by EBP.</strong> This microlearning highlights training, quality oversight, and service delivery. The full DHCS framework also addresses implementation planning, technical assistance, data collection, and payment. <a href="https://bhcoe.dhcs.ca.gov/resources/bh-connect-bhsa-ebp-requirements-key-roles/">Review the complete DHCS requirements and stakeholder roles</a>.</p>
       <p><button type="button" class="inline-glossary" data-open-glossary>Open the glossary for full EBP names</button></p>
     </div>
   </section>
@@ -553,7 +553,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
           <div class="accordion-content">
             <dl class="role-breakdown">
               <div><dt class="tag">DHCS</dt><dd>Set requirements and operational guidance; oversee compliance.</dd></div>
-              <div><dt class="tag">COEs</dt><dd>Support practitioners in delivering services and counties in establishing EBP teams and programs.</dd></div>
+              <div><dt class="tag">COEs</dt><dd>Support practitioners in delivering services and support counties in establishing EBP teams, HFW provider sites, or EBP programs, as applicable.</dd></div>
               <div><dt class="tag">Counties</dt><dd>Ensure practitioners deliver services consistent with DHCS requirements.</dd></div>
               <div><dt class="tag">Practitioners</dt><dd>Identify and enroll individuals for whom EBPs are medically necessary; deliver EBPs consistent with standards and DHCS requirements.</dd></div>
             </dl>
@@ -623,7 +623,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
   <div class="wrap">
     <p>Source: DHCS BH-CONNECT/BHSA guidance. <a href="https://bhcoe.dhcs.ca.gov/resources/bh-connect-bhsa-ebp-requirements-key-roles/">Review the Key Roles resource</a> for full process and EBP detail.</p>
     <p class="accessibility-note"><strong>Accessibility features:</strong> keyboard navigation, visible focus, semantic structure, captions and transcript, reduced-motion support, responsive reflow, accessible form controls, and live feedback.</p>
-    <p class="credit">Designed and developed by <a href="https://www.shabnamgoli.com/">Shabnam Goli, PhD | Portfolio</a></p>
+    <p class="credit">Designed and developed by Shabnam Goli, PhD <span aria-hidden="true">|</span> <a href="https://www.shabnamgoli.com/">Portfolio</a></p>
   </div>
 </footer>
 
@@ -716,6 +716,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
   var progressText = document.querySelector(".progress-text");
   var btnBack = document.getElementById("btn-back");
   btnNext = document.getElementById("btn-next");
+  var siteFooter = document.querySelector(".site-footer");
   var current = 0;
 
   function showScreen(index) {
@@ -729,6 +730,12 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
       progressText.textContent = "Screen " + (index + 1) + " of " + screens.length + ": " + screens[index].getAttribute("data-title");
     }
     if (btnBack) btnBack.disabled = index === 0;
+
+    // Keep the full footer on the welcome and completion screens only.
+    if (siteFooter) {
+      siteFooter.hidden = !(index === 0 || index === screens.length - 1);
+    }
+
     if (btnNext) {
       if (index === 3 && !knowledgeCheckComplete) {
         btnNext.disabled = true;
