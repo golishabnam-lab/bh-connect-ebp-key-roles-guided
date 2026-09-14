@@ -286,7 +286,19 @@ a:hover { color: var(--grad-end); }
   border-left: 4px solid var(--blue-accent);
   background: var(--white);
   font-size: 0.9rem;
+  width: 100%;
+  max-width: none;
 }
+.roles-scope-note {
+  margin: 0.9rem 0 1.1rem;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid var(--blue-accent);
+  background: var(--blue-bg);
+  font-size: 0.9rem;
+  width: 100%;
+  max-width: none;
+}
+.training-source { margin: 1rem 0 0; max-width: none; }
 @media (max-width: 640px) { .pathway-grid { grid-template-columns: 1fr; } }
 
 .accordion-group { margin-top: 1.25rem; }
@@ -363,6 +375,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
 
 .site-footer { padding: 1.75rem 0 2.5rem; }
 .site-footer p { font-size: 0.85rem; color: var(--ink-soft); max-width: 70ch; margin: 0 0 0.5rem; }
+.accessibility-note { max-width: none !important; }
 .credit { font-weight: 600; color: var(--ink) !important; }
 </style>
 </head>
@@ -475,6 +488,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
         <article class="pathway-card">
           <h3>Accreditation or certification</h3>
           <p>Confirms that formal standards have been met.</p>
+          <p class="pathway-label">Applies to</p>
           <ul class="pathway-list">
             <li><strong>Accreditation:</strong> Clubhouse Services</li>
             <li><strong>Certification:</strong> MST, FFT, and PCIT</li>
@@ -492,6 +506,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
       <h2 id="action-heading">Roles in action</h2>
       <p><strong>Objective 2:</strong> Differentiate stakeholder responsibilities across key implementation processes.</p>
       <p>Select each topic to see how responsibilities are shared across training, quality oversight, and service delivery.</p>
+      <p class="roles-scope-note"><strong>Course scope:</strong> This 5-minute microlearning highlights three representative implementation processes. The full DHCS framework also addresses implementation planning, technical assistance, data collection, and payment. <a href="https://bhcoe.dhcs.ca.gov/resources/bh-connect-bhsa-ebp-requirements-key-roles/">Review the complete DHCS Key Roles resource</a>.</p>
 
       <div class="accordion-group">
 
@@ -499,11 +514,12 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
           <summary><span>Training</span><span class="accordion-icon" aria-hidden="true"></span></summary>
           <div class="accordion-content">
             <dl class="role-breakdown">
-              <div><dt class="tag">DHCS</dt><dd>Set training requirements; review COE data; oversee compliance.</dd></div>
+              <div><dt class="tag">DHCS</dt><dd><strong>ACT, FACT, CSC, IPS, and HFW:</strong> establish training requirements, review COE training data, oversee COE training delivery, and oversee county compliance. <strong>Clubhouse Services, MST, FFT, and PCIT:</strong> review COE training data and oversee COE training delivery.</dd></div>
               <div><dt class="tag">COEs</dt><dd>Develop and deliver required training; track completion; send reports.</dd></div>
               <div><dt class="tag">Counties</dt><dd>Ensure practitioners complete training; review reports.</dd></div>
               <div><dt class="tag">Practitioners</dt><dd>Complete required training.</dd></div>
             </dl>
+            <p class="fine-print training-source">Training responsibilities differ by EBP group. <a href="https://bhcoe.dhcs.ca.gov/resources/bh-connect-bhsa-ebp-requirements-key-roles/">Review the complete DHCS training roles and requirements</a>.</p>
           </div>
         </details>
 
@@ -606,7 +622,8 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
 <footer class="site-footer">
   <div class="wrap">
     <p>Source: DHCS BH-CONNECT/BHSA guidance. <a href="https://bhcoe.dhcs.ca.gov/resources/bh-connect-bhsa-ebp-requirements-key-roles/">Review the Key Roles resource</a> for full process and EBP detail.</p>
-    <p class="credit">Designed and developed by Shabnam Goli, PhD</p>
+    <p class="accessibility-note"><strong>Accessibility features:</strong> keyboard navigation, visible focus, semantic structure, captions and transcript, reduced-motion support, responsive reflow, accessible form controls, and live feedback.</p>
+    <p class="credit">Designed and developed by <a href="https://www.shabnamgoli.com/">Shabnam Goli, PhD | Portfolio</a></p>
   </div>
 </footer>
 
@@ -728,7 +745,8 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
       heading.setAttribute("tabindex", "-1");
       heading.focus();
     }
-    screens[index].scrollIntoView({ behavior: "smooth", block: "start" });
+    var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    screens[index].scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
   }
 
   dots.forEach(function (d, i) {
