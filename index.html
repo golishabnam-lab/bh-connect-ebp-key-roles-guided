@@ -100,13 +100,18 @@ a:hover { color: var(--grad-end); }
   margin: 0;
 }
 .lede { color: #E4EDF4; max-width: 60ch; font-size: 1.12rem; }
+.objective-intro {
+  color: #F2F6F9;
+  font-weight: 700;
+  margin: 1.35rem 0 0;
+}
 .header-objectives {
-  margin: 1rem 0 1.15rem;
+  margin: 0.8rem 0 1.35rem;
   padding-left: 1.35rem;
   color: #F2F6F9;
   max-width: 68ch;
 }
-.header-objectives li { margin: 0.25rem 0; }
+.header-objectives li { margin: 0.4rem 0; }
 .meta-badge {
   display: inline-block;
   border: 1px solid rgba(255,255,255,0.35);
@@ -224,6 +229,26 @@ a:hover { color: var(--grad-end); }
   color: var(--ink-soft);
   padding: 0 0.15rem;
 }
+.flow-arrow-control { display: none; }
+.flow-enhanced .flow-arrow-control { display: flex; }
+.flow-reveal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--grad-end);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--grad-end);
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+.flow-reveal:hover { background: var(--grad-end); color: var(--white); }
+.flow-reveal:disabled { opacity: 0.6; cursor: default; }
 @media (max-width: 640px) {
   .flow-diagram { flex-direction: column; }
   .flow-arrow { transform: rotate(90deg); padding: 0.1rem 0; }
@@ -309,6 +334,10 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
 .feedback.incorrect { background: var(--chip-bg); border-color: #C79A00; color: var(--chip-text); }
 .feedback.empty { background: #FBF0DC; border-color: #C79A3E; color: var(--ink); }
 
+.section-complete { background: var(--blue-bg); }
+.completion-objectives { max-width: 68ch; }
+.completion-objectives li { margin: 0.5rem 0; }
+
 .site-footer { padding: 1.75rem 0 2.5rem; }
 .site-footer p { font-size: 0.85rem; color: var(--ink-soft); max-width: 70ch; margin: 0 0 0.5rem; }
 .credit { font-weight: 600; color: var(--ink) !important; }
@@ -323,9 +352,10 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
     <p class="eyebrow">BH-CONNECT &amp; BHSA &middot; Key Roles</p>
     <h1>Key Roles in EBP Implementation</h1>
     <p class="lede">Four groups share the work. Learn who does what and how the roles work together.</p>
+    <p class="objective-intro">By the end of this training, you will be able to:</p>
     <ul class="header-objectives" aria-label="Learning objectives">
       <li>Identify each stakeholder role's core responsibility.</li>
-      <li>Compare how the roles interact across key implementation processes.</li>
+      <li>Differentiate stakeholder responsibilities across key implementation processes.</li>
       <li>Select the appropriate implementation partner for a common need.</li>
     </ul>
     <p class="meta-badge"><span aria-hidden="true">&#9201;</span> About 5 minutes &middot; 3 objectives</p>
@@ -338,8 +368,9 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
     <li><button type="button" class="dot" data-target="1" aria-current="false">2</button></li>
     <li><button type="button" class="dot" data-target="2" aria-current="false">3</button></li>
     <li><button type="button" class="dot" data-target="3" aria-current="false">4</button></li>
+    <li><button type="button" class="dot" data-target="4" aria-current="false">5</button></li>
   </ol>
-  <p class="progress-text" aria-live="polite">Screen 1 of 4</p>
+  <p class="progress-text" aria-live="polite">Screen 1 of 5</p>
 </nav>
 
 <main id="main-content">
@@ -347,7 +378,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
   <section class="section screen" data-title="Overview" aria-labelledby="video-heading">
     <div class="wrap">
       <h2 id="video-heading">Watch the overview</h2>
-      <p>Captions on. Transcript below.</p>
+      <p>Meet the four stakeholder groups and learn how their responsibilities differ. Open the transcript to read the narration.</p>
 
       <div class="video-frame">
         <video id="intro-video" controls preload="metadata" poster="video-poster.svg" aria-describedby="video-caption-note">
@@ -380,34 +411,34 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
     <div class="wrap">
       <h2 id="flow-heading">The four roles</h2>
       <p><strong>Objective 1:</strong> Identify each stakeholder role's core responsibility.</p>
-      <p>This recap shows the four roles and how their responsibilities connect.</p>
+      <p>Select each arrow to reveal the next stakeholder. Then review the four role cards.</p>
 
       <ol class="flow-diagram" aria-label="Connected responsibilities from DHCS to practitioners">
-        <li class="flow-step"><span class="flow-label">DHCS</span><span class="flow-role">sets requirements</span></li>
-        <li class="flow-arrow" aria-hidden="true">&rarr;</li>
-        <li class="flow-step"><span class="flow-label">COEs</span><span class="flow-role">training, technical assistance &amp; fidelity support</span></li>
-        <li class="flow-arrow" aria-hidden="true">&rarr;</li>
-        <li class="flow-step"><span class="flow-label">Counties</span><span class="flow-role">ensure practitioners meet requirements</span></li>
-        <li class="flow-arrow" aria-hidden="true">&rarr;</li>
-        <li class="flow-step"><span class="flow-label">Practitioners</span><span class="flow-role">complete requirements &amp; deliver EBPs</span></li>
+        <li class="flow-step" id="flow-dhcs"><span class="flow-label">DHCS</span><span class="flow-role">sets requirements</span></li>
+        <li class="flow-arrow flow-arrow-control"><button type="button" class="flow-reveal" aria-controls="flow-coes" aria-expanded="false" aria-label="Reveal Centers of Excellence">&rarr;</button></li>
+        <li class="flow-step" id="flow-coes"><span class="flow-label">COEs</span><span class="flow-role">provide training, technical assistance &amp; fidelity support</span></li>
+        <li class="flow-arrow flow-arrow-control"><button type="button" class="flow-reveal" aria-controls="flow-counties" aria-expanded="false" aria-label="Reveal counties">&rarr;</button></li>
+        <li class="flow-step" id="flow-counties"><span class="flow-label">Counties</span><span class="flow-role">ensure practitioners meet requirements</span></li>
+        <li class="flow-arrow flow-arrow-control"><button type="button" class="flow-reveal" aria-controls="flow-practitioners" aria-expanded="false" aria-label="Reveal practitioners">&rarr;</button></li>
+        <li class="flow-step" id="flow-practitioners"><span class="flow-label">Practitioners</span><span class="flow-role">complete requirements &amp; deliver EBPs</span></li>
       </ol>
 
       <div class="role-grid">
         <article class="role-card">
-          <h3>Behavioral Health Practitioners</h3>
-          <p>Contract to deliver EBPs. Complete training &amp; fidelity checks. Provide care.</p>
-        </article>
-        <article class="role-card">
-          <h3>Counties</h3>
-          <p>Contract practitioners. Ensure requirements are met. Report to DHCS.</p>
+          <h3>DHCS</h3>
+          <p>Set requirements. Oversee compliance. Answer policy &amp; payment questions.</p>
         </article>
         <article class="role-card">
           <h3>Centers of Excellence (COEs)</h3>
           <p>Deliver training, technical assistance &amp; fidelity support. Track status. Send reports.</p>
         </article>
         <article class="role-card">
-          <h3>DHCS</h3>
-          <p>Set requirements. Oversee compliance. Answer policy &amp; payment questions.</p>
+          <h3>Counties</h3>
+          <p>Contract practitioners. Ensure requirements are met. Report to DHCS.</p>
+        </article>
+        <article class="role-card">
+          <h3>Behavioral Health Practitioners</h3>
+          <p>Contract to deliver EBPs. Complete training &amp; fidelity checks. Provide care.</p>
         </article>
       </div>
     </div>
@@ -416,7 +447,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
   <section class="section screen" data-title="See it in action" aria-labelledby="action-heading">
     <div class="wrap">
       <h2 id="action-heading">See it in action</h2>
-      <p><strong>Objective 2:</strong> Compare how the roles interact across key implementation processes.</p>
+      <p><strong>Objective 2:</strong> Differentiate stakeholder responsibilities across key implementation processes.</p>
       <p>Select each downward arrow to expand Training, Fidelity Monitoring, and Service Delivery. Review how responsibilities are shared across DHCS, COEs, counties, and practitioners.</p>
 
       <div class="accordion-group">
@@ -491,6 +522,19 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
     </div>
   </section>
 
+  <section class="section screen section-complete" data-title="Training complete" aria-labelledby="complete-heading">
+    <div class="wrap">
+      <h2 id="complete-heading">Great job completing this training</h2>
+      <p>You have learned who the four key stakeholder groups are and how they work together to support EBP implementation.</p>
+      <h3>You can now:</h3>
+      <ul class="completion-objectives">
+        <li>Identify each stakeholder role's core responsibility.</li>
+        <li>Differentiate stakeholder responsibilities across key implementation processes.</li>
+        <li>Select the appropriate implementation partner for a common need.</li>
+      </ul>
+    </div>
+  </section>
+
 </main>
 
 <div class="player-nav js-only">
@@ -501,7 +545,7 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
 <footer class="site-footer">
   <div class="wrap">
     <p>Source: DHCS BH-CONNECT/BHSA guidance. <a href="https://bhcoe.dhcs.ca.gov/resources/bh-connect-bhsa-ebp-requirements-key-roles/">Review the Key Roles resource</a> for full process and EBP detail.</p>
-    <p class="credit">Designed by Shabnam Goli, PhD</p>
+    <p class="credit">Designed and developed by Shabnam Goli, PhD</p>
   </div>
 </footer>
 
@@ -540,6 +584,39 @@ legend { font-weight: 700; font-size: 1.1rem; color: var(--headline); padding: 0
       feedback.hidden = false;
       feedback.focus();
     });
+  }
+
+  // ---- Click-to-reveal stakeholder sequence (progressive enhancement) ----
+  var flowDiagram = document.querySelector(".flow-diagram");
+  if (flowDiagram) {
+    var flowButtons = Array.prototype.slice.call(flowDiagram.querySelectorAll(".flow-reveal"));
+    var flowSteps = Array.prototype.slice.call(flowDiagram.querySelectorAll(".flow-step"));
+
+    if (flowButtons.length && flowSteps.length) {
+      flowDiagram.classList.add("flow-enhanced");
+      flowSteps.slice(1).forEach(function (step) { step.hidden = true; });
+      flowButtons.forEach(function (button, index) {
+        var arrowItem = button.closest(".flow-arrow");
+        if (index > 0 && arrowItem) arrowItem.hidden = true;
+
+        button.addEventListener("click", function () {
+          var target = document.getElementById(button.getAttribute("aria-controls"));
+          if (!target) return;
+
+          target.hidden = false;
+          button.setAttribute("aria-expanded", "true");
+          button.disabled = true;
+
+          if (flowButtons[index + 1]) {
+            var nextArrow = flowButtons[index + 1].closest(".flow-arrow");
+            if (nextArrow) nextArrow.hidden = false;
+          }
+
+          target.setAttribute("tabindex", "-1");
+          target.focus();
+        });
+      });
+    }
   }
 
   // ---- Player-style pagination (progressive enhancement) ----
